@@ -1,0 +1,26 @@
+.imageContainer {
+  background-image: url("../../assets/sign-up-form-background.jpg");
+  background-position: center;
+  height: 100%;
+  width: 35%;
+}
+
+.logoContainer {
+  background-color: rgba(0, 0, 0, 0.5);
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  position: sticky;
+  top: 50%;
+  gap: 1rem;
+}
+
+.logo {
+  height: 100%;
+  width: 30%;
+}
+
+.odinName {
+  color: #7a7978;
+  height: 100%;
+}
