@@ -1,13 +1,18 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
 import "./App.css";
-import ImageContainer from "./components/ImageContainer/ImageContainer";
+import ImageContainer from "./components/ImageContainer";
+import Header from "./components/Header";
+import SignUpForm from "./components/SignUpForm";
+import ButtonContainer from "./components/ButtonContainer";
 
 function App() {
   return (
     <div className="app">
       <ImageContainer />
+      <div className="rightContainer">
+        <Header />
+        <SignUpForm />
+        <ButtonContainer />
+      </div>
     </div>
   );
 }

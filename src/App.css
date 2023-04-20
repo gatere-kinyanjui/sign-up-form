@@ -7,4 +7,28 @@
 .app {
   height: 100%;
   width: 100%;
+  display: flex;
+  flex-flow: row wrap;
+  color: #004e64;
+}
+
+.rightContainer {
+  width: 60%;
+  display: flex;
+  flex-flow: column;
+}
+
+.inputContainer {
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: center;
+  align-items: baseline;
+  padding-inline: 1rem;
+  width: 49%;
+}
+
+@media screen and (max-width: 785px) {
+  .inputContainer {
+    width: 100%;
+  }
 }
