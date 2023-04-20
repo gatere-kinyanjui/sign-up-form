@@ -1,0 +1,12 @@
+.header {
+  height: 30%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-size-adjust: auto;
+}
+
+.intro {
+  color: #004e64;
+  padding-inline: 1em;
+}

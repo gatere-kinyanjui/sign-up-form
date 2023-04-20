@@ -1,0 +1,30 @@
+.buttonContainer {
+  display: flex;
+  align-content: center;
+  align-items: center;
+  justify-content: start;
+  height: 30%;
+  width: 100%;
+}
+
+.signUpButton {
+  background-color: #25a18e;
+  color: #9fffcb;
+  width: 8rem;
+  height: 3rem;
+  border: transparent;
+  outline: transparent;
+  border-radius: 5px;
+  margin-inline-start: 1rem;
+  opacity: 0.7;
+  cursor: pointer;
+}
+
+.signUpButton:hover {
+  opacity: 1;
+  transition: ease-in-out 0.6s;
+  background-color: #9fffcb;
+  color: #004e64;
+  font-size: 1rem;
+  font-weight: 800;
+}
