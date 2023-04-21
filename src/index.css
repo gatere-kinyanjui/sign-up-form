@@ -61,6 +61,12 @@ h5 {
   font-size: 1.25rem;
 }
 
+a {
+  color: #023e8a;
+  font-weight: 900;
+  text-decoration: none;
+}
+
 small,
 .text_small {
   font-size: 0.8rem;

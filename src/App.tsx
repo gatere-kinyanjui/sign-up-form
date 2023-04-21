@@ -2,7 +2,8 @@ import "./App.css";
 import ImageContainer from "./components/ImageContainer";
 import Header from "./components/Header";
 import SignUpForm from "./components/SignUpForm";
-import ButtonContainer from "./components/ButtonContainer";
+import SignUpButton from "./components/SignUpButton";
+import LogIn from "./components/LogIn";
 
 function App() {
   return (
@@ -11,7 +12,7 @@ function App() {
       <div className="rightContainer">
         <Header />
         <SignUpForm />
-        <ButtonContainer />
+        <LogIn />
       </div>
     </div>
   );

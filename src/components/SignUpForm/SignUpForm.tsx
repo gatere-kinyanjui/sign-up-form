@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "./styles.module.css";
+import SignUpButton from "../SignUpButton";
 
 const SignUpForm = () => {
   return (
@@ -70,6 +71,8 @@ const SignUpForm = () => {
           id=""
         />
       </div>
+
+      <SignUpButton />
     </form>
   );
 };

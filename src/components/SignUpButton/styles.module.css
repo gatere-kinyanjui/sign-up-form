@@ -3,7 +3,7 @@
   align-content: center;
   align-items: center;
   justify-content: start;
-  height: 30%;
+  height: 10%;
   width: 100%;
 }
 
@@ -22,9 +22,9 @@
 
 .signUpButton:hover {
   opacity: 1;
-  transition: ease-in-out 0.6s;
-  background-color: #9fffcb;
-  color: #004e64;
-  font-size: 1rem;
+  transition: ease-in-out 0.25s;
+  background-color: #023e8a;
+  color: #ade8f4;
+  /* font-size: 1rem; */
   font-weight: 800;
 }

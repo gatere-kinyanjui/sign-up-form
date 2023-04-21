@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./styles.module.css";
 
-const ButtonContainer = () => {
+const SignUpButton = () => {
   return (
     <div className={styles.buttonContainer}>
       <button className={styles.signUpButton} type="submit">
@@ -11,4 +11,4 @@ const ButtonContainer = () => {
   );
 };
 
-export default ButtonContainer;
+export default SignUpButton;
