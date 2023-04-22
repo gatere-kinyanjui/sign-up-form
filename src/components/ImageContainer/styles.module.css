@@ -4,7 +4,7 @@
   background-image: url("../../assets/sign-up-form-background.jpg");
   background-position: center;
   height: 100%;
-  width: 40%;
+  width: 35%;
 }
 
 .logoContainer {
@@ -24,7 +24,7 @@
 }
 
 .odinName {
-  color: #7ae582;
+  color: #e5d9f2;
   height: 100%;
   font-family: "Monoton", cursive;
   font-size: 3rem;
@@ -38,7 +38,7 @@
     width: 20%;
   }
   .odinName {
-    color: #a5be00;
+    color: #f5efff;
     font-size: 1.45rem;
   }
 }

@@ -9,11 +9,11 @@
   width: 100%;
   display: flex;
   flex-flow: row wrap;
-  color: #004e64;
+  color: #000000;
 }
 
 .rightContainer {
-  width: 60%;
+  width: 65%;
   display: flex;
   flex-flow: column;
 }

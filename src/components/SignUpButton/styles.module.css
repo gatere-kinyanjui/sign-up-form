@@ -8,23 +8,23 @@
 }
 
 .signUpButton {
-  background-color: #25a18e;
-  color: #9fffcb;
+  background-color: #a594f9;
+  /* color: #f5efff; */
   width: 8rem;
   height: 3rem;
   border: transparent;
   outline: transparent;
   border-radius: 5px;
   margin-inline-start: 1rem;
-  opacity: 0.7;
+  opacity: 0.8;
   cursor: pointer;
 }
 
 .signUpButton:hover {
   opacity: 1;
   transition: ease-in-out 0.25s;
-  background-color: #023e8a;
-  color: #ade8f4;
+  background-color: #7371fc;
+  color: #e5d9f2;
   /* font-size: 1rem; */
-  font-weight: 800;
+  font-weight: 1000;
 }
