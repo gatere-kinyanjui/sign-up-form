@@ -18,6 +18,10 @@ input {
   border-bottom: #a594f9 1px solid;
 }
 
+input:invalid {
+  color: orangered;
+}
+
 @media screen and (max-width: 725px) {
   .signUpForm {
     height: 50%;
@@ -29,4 +33,39 @@ input {
   .signUpForm {
     height: 70%;
   }
+}
+
+span {
+  color: #dd1c1a;
+}
+
+.buttonContainer {
+  display: flex;
+  align-content: center;
+  align-items: center;
+  justify-content: start;
+  height: 10%;
+  width: 100%;
+}
+
+.signUpButton {
+  background-color: #a594f9;
+  /* color: #f5efff; */
+  width: 8rem;
+  height: 3rem;
+  border: transparent;
+  outline: transparent;
+  border-radius: 5px;
+  margin-inline-start: 1rem;
+  opacity: 0.8;
+  cursor: pointer;
+}
+
+.signUpButton:hover {
+  opacity: 1;
+  transition: ease-in-out 0.25s;
+  background-color: #7371fc;
+  color: #e5d9f2;
+  /* font-size: 1rem; */
+  font-weight: 1000;
 }
