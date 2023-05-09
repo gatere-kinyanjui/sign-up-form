@@ -10,7 +10,7 @@ type FormData = {
   firstName: string;
   secondName: string;
   email: string;
-  phoneNumber: number;
+  phoneNumber: string;
   password: string;
   confirmPassword: string;
 };
