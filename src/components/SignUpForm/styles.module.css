@@ -17,6 +17,11 @@ input {
   padding: 0.3rem;
   border-bottom: #a594f9 1px solid;
 }
+input:focus {
+  background-color: #e6efe9;
+  border-bottom: #a594f9 2px solid;
+  transition: ease-in-out;
+}
 
 input:invalid {
   color: orangered;
@@ -37,6 +42,15 @@ input:invalid {
 
 span {
   color: #dd1c1a;
+}
+.textSmall {
+  font-size: 0.75rem;
+}
+
+@media screen and (max-width: 480px) {
+  .textSmall {
+    font-size: 0.5rem;
+  }
 }
 
 .buttonContainer {

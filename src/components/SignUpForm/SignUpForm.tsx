@@ -29,13 +29,18 @@ const SignUpForm = () => {
       email: z
         .string()
         .email({ message: "Please enter a valid email address." }),
-      phoneNumber: z.number(),
-      // .lte(10, { message: "Please use this format; '07XX XXXXXX'." })
-      // .gte(10, { message: "Please use this format; '07XX XXXXXX'." }),
+      phoneNumber: z
+        .string()
+        .length(10, { message: "Phone number must be ten digits long." })
+        .regex(/^\d{4}[- ]?\d{6}$/, {
+          message: "Phone number must be in the following format: 07XXXXXXXX",
+        }),
       password: z
         .string()
         .min(8, { message: "Password must be at least 8 characters long." }),
-      confirmPassword: z.string().min(8),
+      confirmPassword: z
+        .string()
+        .min(8, { message: "Password must be at least 8 characters long." }),
     })
     .refine((data) => data.password === data.confirmPassword, {
       message: "Passwords do not match",
@@ -52,8 +57,7 @@ const SignUpForm = () => {
 
   const submitData = (data: FormData) => {
     console.log("SUBMITTED", data);
-    console.log(UserSchema.parse(data));
-    console.log("button pressed");
+    console.trace();
   };
 
   // const [password, setPassword] = useState("");
@@ -80,7 +84,9 @@ const SignUpForm = () => {
           className={styles.firstName}
           {...register("firstName")}
         />
-        {errors.firstName && <span> {errors.firstName.message}</span>}
+        {errors.firstName && (
+          <span className={styles.textSmall}> {errors.firstName.message}</span>
+        )}
       </div>
 
       <div className={`inputContainer ${styles.secondNameContainer}`}>
@@ -92,7 +98,9 @@ const SignUpForm = () => {
           className={styles.secondName}
           {...register("secondName")}
         />
-        {errors.secondName && <span> {errors.secondName.message}</span>}
+        {errors.secondName && (
+          <span className={styles.textSmall}> {errors.secondName.message}</span>
+        )}
       </div>
 
       <div className={`inputContainer ${styles.emailContainer}`}>
@@ -105,7 +113,9 @@ const SignUpForm = () => {
           className={styles.email}
           placeholder="john@you.com"
         />
-        {errors.email && <span> {errors.email.message}</span>}
+        {errors.email && (
+          <span className={styles.textSmall}> {errors.email.message}</span>
+        )}
       </div>
 
       <div className={`inputContainer ${styles.phoneNumberContainer}`}>
@@ -113,12 +123,17 @@ const SignUpForm = () => {
           Phone Number
         </label>
         <input
-          {...register("phoneNumber", { valueAsNumber: true })}
+          {...register("phoneNumber")}
           type="tel"
           className={styles.phoneNumber}
-          placeholder="07XX-XXXXXX"
+          placeholder="07XXXXXXXX"
         />
-        {errors.phoneNumber && <span> {errors.phoneNumber.message}</span>}
+        {errors.phoneNumber && (
+          <span className={styles.textSmall}>
+            {" "}
+            {errors.phoneNumber.message}
+          </span>
+        )}
       </div>
 
       <div className={`inputContainer ${styles.passwordContainer}`}>
@@ -130,7 +145,9 @@ const SignUpForm = () => {
           className={styles.password}
           {...register("password")}
         />
-        {errors.password && <span> {errors.password.message}</span>}
+        {errors.password && (
+          <span className={styles.textSmall}> {errors.password.message}</span>
+        )}
       </div>
 
       <div className={`inputContainer ${styles.confirmPasswordContainer}`}>
@@ -146,7 +163,10 @@ const SignUpForm = () => {
           {...register("confirmPassword")}
         />
         {errors.confirmPassword && (
-          <span> {errors.confirmPassword.message}</span>
+          <span className={styles.textSmall}>
+            {" "}
+            {errors.confirmPassword.message}
+          </span>
         )}
       </div>
 
