@@ -1,4 +1,4 @@
-import React, { FormEvent } from "react";
+import React, { FormEvent, useState } from "react";
 import styles from "./styles.module.css";
 import SignUpButton from "../SignUpButton";
 
@@ -16,6 +16,7 @@ type FormData = {
 };
 
 const SignUpForm = () => {
+  // Defining the UserSchema object with Zod.
   const UserSchema: ZodType<FormData> = z
     .object({
       firstName: z
@@ -47,6 +48,29 @@ const SignUpForm = () => {
       path: ["confirmPassword"],
     });
 
+  const [formData, setFormData] = useState<FormData>({
+    firstName: "",
+    secondName: "",
+    email: "",
+    phoneNumber: "",
+    password: "",
+    confirmPassword: "",
+  });
+
+  // Defining the form submission handler.
+  const submitData = (data: FormData) => {
+    console.log("SUBMITTED", data);
+    setFormData({
+      firstName: "",
+      secondName: "",
+      email: "",
+      phoneNumber: "",
+      password: "",
+      confirmPassword: "",
+    });
+  };
+
+  // Defining the form element and its input elements.
   const {
     register,
     handleSubmit,
@@ -55,26 +79,8 @@ const SignUpForm = () => {
     resolver: zodResolver(UserSchema),
   });
 
-  const submitData = (data: FormData) => {
-    console.log("SUBMITTED", data);
-    console.trace();
-  };
-
-  // const [password, setPassword] = useState("");
-  // const [errors, setErrors] = useState("");
-
-  const handleButtonPress = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    console.log("button pressed?");
-    console.log(UserSchema.parse);
-  };
-
   return (
-    <form
-      className={styles.signUpForm}
-      onSubmit={handleSubmit(submitData)}
-      // onSubmit={handleButtonPress}
-    >
+    <form className={styles.signUpForm} onSubmit={handleSubmit(submitData)}>
       <div className={`inputContainer ${styles.firstNameContainer}`}>
         <label className={styles.FirstName} htmlFor="">
           First Name
@@ -82,13 +88,17 @@ const SignUpForm = () => {
         <input
           type="text"
           className={styles.firstName}
-          {...register("firstName")}
+          {...register("firstName", { required: true })}
+          placeholder="John"
+          value={formData.firstName}
+          onChange={(e) =>
+            setFormData({ ...formData, firstName: e.target.value })
+          }
         />
         {errors.firstName && (
           <span className={styles.textSmall}> {errors.firstName.message}</span>
         )}
       </div>
-
       <div className={`inputContainer ${styles.secondNameContainer}`}>
         <label className={styles.SecondName} htmlFor="">
           Second Name
@@ -97,6 +107,11 @@ const SignUpForm = () => {
           type="text"
           className={styles.secondName}
           {...register("secondName")}
+          placeholder="You"
+          value={formData.secondName}
+          onChange={(e) =>
+            setFormData({ ...formData, secondName: e.target.value })
+          }
         />
         {errors.secondName && (
           <span className={styles.textSmall}> {errors.secondName.message}</span>
@@ -112,12 +127,13 @@ const SignUpForm = () => {
           type="email"
           className={styles.email}
           placeholder="john@you.com"
+          value={formData.email}
+          onChange={(e) => setFormData({ ...formData, email: e.target.value })}
         />
         {errors.email && (
           <span className={styles.textSmall}> {errors.email.message}</span>
         )}
       </div>
-
       <div className={`inputContainer ${styles.phoneNumberContainer}`}>
         <label className={styles.PhoneNumber} htmlFor="">
           Phone Number
@@ -126,16 +142,16 @@ const SignUpForm = () => {
           {...register("phoneNumber")}
           type="tel"
           className={styles.phoneNumber}
-          placeholder="07XXXXXXXX"
+          placeholder="0712345678"
+          value={formData.phoneNumber}
+          onChange={(e) =>
+            setFormData({ ...formData, phoneNumber: e.target.value })
+          }
         />
         {errors.phoneNumber && (
-          <span className={styles.textSmall}>
-            {" "}
-            {errors.phoneNumber.message}
-          </span>
+          <span className={styles.textSmall}>{errors.phoneNumber.message}</span>
         )}
       </div>
-
       <div className={`inputContainer ${styles.passwordContainer}`}>
         <label className={styles.Password} htmlFor="">
           Password
@@ -144,32 +160,36 @@ const SignUpForm = () => {
           type="password"
           className={styles.password}
           {...register("password")}
+          placeholder="********"
+          value={formData.password}
+          onChange={(e) =>
+            setFormData({ ...formData, password: e.target.value })
+          }
         />
         {errors.password && (
           <span className={styles.textSmall}> {errors.password.message}</span>
         )}
       </div>
-
       <div className={`inputContainer ${styles.confirmPasswordContainer}`}>
         <label className={styles.ConfirmPassword} htmlFor="">
           Confirm Password
         </label>
         <input
           type="password"
-          //           name="confirmPassword"
-          //           'name' is specified more than once, so this usage will be overwritten.ts(2783)
-          // SignUpForm.tsx(146, 11): This spread always overwrites this property.
           className={styles.confirmPassword}
           {...register("confirmPassword")}
+          placeholder="********"
+          value={formData.confirmPassword}
+          onChange={(e) =>
+            setFormData({ ...formData, confirmPassword: e.target.value })
+          }
         />
         {errors.confirmPassword && (
           <span className={styles.textSmall}>
-            {" "}
             {errors.confirmPassword.message}
           </span>
         )}
       </div>
-
       <div className={styles.buttonContainer}>
         <button className={styles.signUpButton}>Create Account</button>
       </div>

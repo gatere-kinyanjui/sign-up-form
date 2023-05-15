@@ -22,7 +22,7 @@ input:focus {
   border-bottom: #a594f9 2px solid;
   transition: ease-in-out;
 }
-
+/* TODO: fuse css with zod */
 input:invalid {
   color: orangered;
 }
@@ -42,6 +42,7 @@ input:invalid {
 
 span {
   color: #dd1c1a;
+  font-style: italic;
 }
 .textSmall {
   font-size: 0.75rem;
