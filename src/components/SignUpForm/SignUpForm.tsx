@@ -6,6 +6,11 @@ import { ZodType, z } from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 
+import firebase from "../../firebase_services/Firebase";
+import { addDoc, collection, getFirestore } from "firebase/firestore";
+
+import { createUserWithEmailAndPassword, getAuth } from "firebase/auth";
+
 type FormData = {
   firstName: string;
   secondName: string;
@@ -58,17 +63,74 @@ const SignUpForm = () => {
   });
 
   // Defining the form submission handler.
-  const submitData = (data: FormData) => {
-    console.log("SUBMITTED", data);
-    setFormData({
-      firstName: "",
-      secondName: "",
-      email: "",
-      phoneNumber: "",
-      password: "",
-      confirmPassword: "",
-    });
+  // const submitData = (data: FormData) => {
+  //   console.log("SUBMITTED", data);
+  //   setFormData({
+  //     firstName: "",
+  //     secondName: "",
+  //     email: "",
+  //     phoneNumber: "",
+  //     password: "",
+  //     confirmPassword: "",
+  //   });
+  // };
+
+  //Redefingin form submission handler for firebase integration
+  const submitData = async (data: FormData) => {
+    try {
+      const auth = getAuth();
+      const userCredential = await createUserWithEmailAndPassword(
+        auth,
+        data.email,
+        data.password
+      );
+      const user = userCredential.user;
+      console.log("New user created.", user);
+      setFormData({
+        firstName: "",
+        secondName: "",
+        email: "",
+        phoneNumber: "",
+        password: "",
+        confirmPassword: "",
+      });
+    } catch (signUpError) {
+      console.error("Error occurred during sign-up:", signUpError);
+    }
+
+    try {
+      const firestore = getFirestore(firebase);
+      const collectionRef = collection(firestore, "users");
+      await addDoc(collectionRef, data);
+      console.log("Data stored in Firebase Firestore.");
+      setFormData({
+        firstName: "",
+        secondName: "",
+        email: "",
+        phoneNumber: "",
+        password: "",
+        confirmPassword: "",
+      });
+    } catch (error) {
+      console.error("Error occurred while submitting form data:", error);
+    }
   };
+
+  // User sign-up
+  // const signUpUser = async (data: FormData) => {
+  //   try {
+  //     const auth = getAuth();
+  //     const userCredential = await createUserWithEmailAndPassword(
+  //       auth,
+  //       data.email,
+  //       data.password
+  //     );
+  //     const user = userCredential.user;
+  //     console.log("New user created.", user);
+  //   } catch (signUpError) {
+  //     console.error("Error occurred during sign-up:", signUpError);
+  //   }
+  // };
 
   // Defining the form element and its input elements.
   const {
