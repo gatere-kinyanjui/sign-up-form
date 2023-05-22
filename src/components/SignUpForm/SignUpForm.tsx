@@ -9,7 +9,11 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import firebase from "../../firebase_services/Firebase";
 import { addDoc, collection, getFirestore } from "firebase/firestore";
 
-import { createUserWithEmailAndPassword, getAuth } from "firebase/auth";
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  AuthErrorCodes,
+} from "firebase/auth";
 
 type FormData = {
   firstName: string;
@@ -62,21 +66,9 @@ const SignUpForm = () => {
     confirmPassword: "",
   });
 
-  // Defining the form submission handler.
-  // const submitData = (data: FormData) => {
-  //   console.log("SUBMITTED", data);
-  //   setFormData({
-  //     firstName: "",
-  //     secondName: "",
-  //     email: "",
-  //     phoneNumber: "",
-  //     password: "",
-  //     confirmPassword: "",
-  //   });
-  // };
-
   //Redefingin form submission handler for firebase integration
   const submitData = async (data: FormData) => {
+    // User sign-up
     try {
       const auth = getAuth();
       const userCredential = await createUserWithEmailAndPassword(
@@ -95,9 +87,12 @@ const SignUpForm = () => {
         confirmPassword: "",
       });
     } catch (signUpError) {
+      const errorCode = AuthErrorCodes;
       console.error("Error occurred during sign-up:", signUpError);
+      console.log(signUpError, errorCode);
     }
 
+    // Firestore storage
     try {
       const firestore = getFirestore(firebase);
       const collectionRef = collection(firestore, "users");
@@ -113,24 +108,9 @@ const SignUpForm = () => {
       });
     } catch (error) {
       console.error("Error occurred while submitting form data:", error);
+      console.log(error);
     }
   };
-
-  // User sign-up
-  // const signUpUser = async (data: FormData) => {
-  //   try {
-  //     const auth = getAuth();
-  //     const userCredential = await createUserWithEmailAndPassword(
-  //       auth,
-  //       data.email,
-  //       data.password
-  //     );
-  //     const user = userCredential.user;
-  //     console.log("New user created.", user);
-  //   } catch (signUpError) {
-  //     console.error("Error occurred during sign-up:", signUpError);
-  //   }
-  // };
 
   // Defining the form element and its input elements.
   const {
@@ -169,7 +149,7 @@ const SignUpForm = () => {
           type="text"
           className={styles.secondName}
           {...register("secondName")}
-          placeholder="You"
+          placeholder="Frank"
           value={formData.secondName}
           onChange={(e) =>
             setFormData({ ...formData, secondName: e.target.value })
