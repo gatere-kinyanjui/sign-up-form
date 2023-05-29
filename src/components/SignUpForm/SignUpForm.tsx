@@ -1,19 +1,13 @@
-import React, { FormEvent, useState } from "react";
+import { useState } from "react";
 import styles from "./styles.module.css";
-import SignUpButton from "../SignUpButton";
 
 import { ZodType, z } from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 
-import firebase from "../../firebase_services/Firebase";
-import { addDoc, collection, getFirestore } from "firebase/firestore";
+import { signUpWithEmailAndPassword } from "../../firebase_services/Firebase";
 
-import {
-  getAuth,
-  createUserWithEmailAndPassword,
-  AuthErrorCodes,
-} from "firebase/auth";
+import { nanoid } from "nanoid";
 
 type FormData = {
   firstName: string;
@@ -66,38 +60,20 @@ const SignUpForm = () => {
     confirmPassword: "",
   });
 
-  //Redefingin form submission handler for firebase integration
   const submitData = async (data: FormData) => {
-    // User sign-up
     try {
-      const auth = getAuth();
-      const userCredential = await createUserWithEmailAndPassword(
-        auth,
-        data.email,
-        data.password
-      );
-      const user = userCredential.user;
-      console.log("New user created.", user);
-      setFormData({
-        firstName: "",
-        secondName: "",
-        email: "",
-        phoneNumber: "",
-        password: "",
-        confirmPassword: "",
-      });
-    } catch (signUpError) {
-      const errorCode = AuthErrorCodes;
-      console.error("Error occurred during sign-up:", signUpError);
-      console.log(signUpError, errorCode);
-    }
+      const credentials: IClientUserCredentials = {
+        id: nanoid(),
+        firstName: data.firstName,
+        secondName: data.secondName,
+        email: data.email,
+        phoneNumber: data.phoneNumber,
+        password: data.password,
+        confirmPassword: data.confirmPassword,
+      };
 
-    // Firestore storage
-    try {
-      const firestore = getFirestore(firebase);
-      const collectionRef = collection(firestore, "users");
-      await addDoc(collectionRef, data);
-      console.log("Data stored in Firebase Firestore.");
+      await signUpWithEmailAndPassword(data.email, data.password, credentials);
+
       setFormData({
         firstName: "",
         secondName: "",
@@ -106,9 +82,9 @@ const SignUpForm = () => {
         password: "",
         confirmPassword: "",
       });
-    } catch (error) {
-      console.error("Error occurred while submitting form data:", error);
-      console.log(error);
+    } catch (err: any) {
+      console.error(err);
+      alert(err.message);
     }
   };
 
@@ -234,6 +210,15 @@ const SignUpForm = () => {
       </div>
       <div className={styles.buttonContainer}>
         <button className={styles.signUpButton}>Create Account</button>
+      </div>
+
+      <div className={styles.loginRedirect}>
+        <p className={styles.alreadySignedUp}>
+          Already have an account? Sign in{" "}
+          <a href="#" onClick={() => alert("modal appears")}>
+            here.
+          </a>
+        </p>
       </div>
     </form>
   );

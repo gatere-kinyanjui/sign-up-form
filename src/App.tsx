@@ -12,7 +12,6 @@ function App() {
       <div className="rightContainer">
         <Header />
         <SignUpForm />
-        <LogIn />
       </div>
     </div>
   );
