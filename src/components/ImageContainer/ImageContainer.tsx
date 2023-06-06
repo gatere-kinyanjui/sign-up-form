@@ -1,6 +1,4 @@
-import React from "react";
 import Image from "../../assets/odin-lined.png";
-import BackgroundImage from "../../assets/sign-up-form-background.jpg";
 import styles from "./styles.module.css";
 
 const ImageContainer = () => {
