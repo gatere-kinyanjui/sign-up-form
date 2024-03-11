@@ -1,0 +1,105 @@
+.signUpForm {
+  width: 100%;
+  height: 70%;
+  box-shadow: 0.5em 0 1em #cdc1ff;
+  display: flex;
+  flex-flow: row wrap;
+  gap: 0.1rem;
+}
+
+input {
+  background-color: #f5efff;
+  border: transparent;
+  outline: transparent;
+  border-radius: 2.5px;
+  line-height: 2;
+  width: 100%;
+  padding: 0.3rem;
+  border-bottom: #a594f9 1px solid;
+}
+input:focus {
+  background-color: #e6efe9;
+  border-bottom: #a594f9 2px solid;
+  transition: ease-in-out;
+}
+/* TODO: fuse css with zod */
+input:invalid {
+  color: orangered;
+}
+
+@media screen and (max-width: 725px) {
+  .signUpForm {
+    height: 50%;
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 785px) {
+  .signUpForm {
+    height: 70%;
+  }
+}
+
+span {
+  color: #dd1c1a;
+  font-style: italic;
+}
+.textSmall {
+  font-size: 0.75rem;
+}
+
+@media screen and (max-width: 480px) {
+  .textSmall {
+    font-size: 0.5rem;
+  }
+}
+
+.buttonContainer {
+  display: flex;
+  align-content: center;
+  align-items: center;
+  justify-content: start;
+  height: 10%;
+  width: 100%;
+}
+
+.signUpButton {
+  background-color: #a594f9;
+  /* color: #f5efff; */
+  width: 8rem;
+  height: 3rem;
+  border: transparent;
+  outline: transparent;
+  border-radius: 5px;
+  margin-inline-start: 1rem;
+  opacity: 0.8;
+  cursor: pointer;
+}
+
+.signUpButton:hover {
+  opacity: 1;
+  transition: ease-in-out 0.25s;
+  background-color: #7371fc;
+  color: #e5d9f2;
+  /* font-size: 1rem; */
+  font-weight: 1000;
+}
+.signUpButton button:active {
+  color: #90323d;
+}
+
+.loginRedirect {
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  box-shadow: inset 0em 0.5rem 1em #cdc1ff;
+}
+a {
+  text-decoration: none;
+  color: #7371fc;
+}
+.loginRedirect a:active {
+  color: #90323d;
+}
