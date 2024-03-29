@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite --host",
-    "build": "tsc && vite build",
+    "build": "next build",
     "preview": "vite preview",
     "postinstall": "npx typesync"
   },
