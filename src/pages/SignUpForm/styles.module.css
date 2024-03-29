@@ -7,26 +7,6 @@
   gap: 0.1rem;
 }
 
-input {
-  background-color: #f5efff;
-  border: transparent;
-  outline: transparent;
-  border-radius: 2.5px;
-  line-height: 2;
-  width: 100%;
-  padding: 0.3rem;
-  border-bottom: #a594f9 1px solid;
-}
-input:focus {
-  background-color: #e6efe9;
-  border-bottom: #a594f9 2px solid;
-  transition: ease-in-out;
-}
-/* TODO: fuse css with zod */
-input:invalid {
-  color: orangered;
-}
-
 @media screen and (max-width: 725px) {
   .signUpForm {
     height: 50%;
