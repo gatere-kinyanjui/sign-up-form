@@ -90,6 +90,14 @@ span {
   color: #dd1c1a;
   font-style: italic;
 }
+span {
+  color: #dd1c1a;
+  font-style: italic;
+}
+a {
+  text-decoration: none;
+  color: #7371fc;
+}
 
 small,
 .textSmall {
