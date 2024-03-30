@@ -1,41 +1,32 @@
 {
-  "homepage": "https://gatere-kinyanjui.github.io/sign-up-form/",
   "name": "sign-up-form",
+  "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite --host",
-    "build": "next build",
-    "preview": "vite preview",
-    "postinstall": "npx typesync"
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
   },
-  "dependencies": {
-    "@hookform/resolvers": "^3.1.0",
-    "firebase": "^9.22.0",
-    "lodash": "^4.17.21",
-    "nanoid": "^4.0.2",
-    "next": "^13.4.9",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-hook-form": "^7.43.9",
-    "react-router-dom": "^6.11.2",
-    "react-scripts": "^5.0.1",
-    "typescript-utility-types": "^1.1.1",
-    "uuid": "^9.0.0",
-    "zod": "^3.21.4",
-    "zod-validation-error": "^1.3.0"
-  },
+  "packageManager": "yarn@4.1.1",
   "devDependencies": {
-    "@types/lodash": "^4.14.195",
     "@types/node": "^20.12.2",
     "@types/react": "^18.2.73",
-    "@types/react-dom": "^18.2.4",
-    "@types/uuid": "^9.0.1",
-    "@vitejs/plugin-react": "^4.0.0",
-    "react-error-overlay": "^6.0.11",
-    "typescript": "^5.4.3",
-    "vite": "^4.3.8"
+    "@types/react-dom": "^18"
   },
-  "license": "MIT license",
-  "packageManager": "yarn@4.1.1"
+  "dependencies": {
+    "@hookform/resolvers": "^3.3.4",
+    "@vitejs/plugin-react": "^4.2.1",
+    "firebase": "^9.18.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-hook-form": "^7.51.2",
+    "react-router-dom": "^6.22.3",
+    "vite": "^5.2.7",
+    "zod": "^3.22.4"
+  },
+  "description": "TOP mock form validation sign-up form",
+  "main": "index.js",
+  "author": "",
+  "license": "ISC"
 }
