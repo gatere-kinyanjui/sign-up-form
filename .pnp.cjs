@@ -28,6 +28,7 @@ const RAW_RUNTIME_STATE =
         "packageDependencies": [\
           ["@hookform/resolvers", "virtual:1136eb842bf5b2b151b91be7ae7d9ad900be6e49ea549727b58650cb1259d207451ec5de4164101c81ee751c5ef43e09ee550204f893fc63237eab7c00af7f39#npm:3.3.4"],\
           ["@types/lodash", "npm:4.17.0"],\
+          ["@types/node", "npm:20.12.2"],\
           ["@types/react", "npm:18.2.73"],\
           ["@types/react-dom", "npm:18.2.23"],\
           ["@types/uuid", "npm:9.0.8"],\
@@ -17667,6 +17668,7 @@ const RAW_RUNTIME_STATE =
           ["sign-up-form", "workspace:."],\
           ["@hookform/resolvers", "virtual:1136eb842bf5b2b151b91be7ae7d9ad900be6e49ea549727b58650cb1259d207451ec5de4164101c81ee751c5ef43e09ee550204f893fc63237eab7c00af7f39#npm:3.3.4"],\
           ["@types/lodash", "npm:4.17.0"],\
+          ["@types/node", "npm:20.12.2"],\
           ["@types/react", "npm:18.2.73"],\
           ["@types/react-dom", "npm:18.2.23"],\
           ["@types/uuid", "npm:9.0.8"],\
@@ -19162,7 +19164,7 @@ const RAW_RUNTIME_STATE =
           ["vite", "virtual:1136eb842bf5b2b151b91be7ae7d9ad900be6e49ea549727b58650cb1259d207451ec5de4164101c81ee751c5ef43e09ee550204f893fc63237eab7c00af7f39#npm:4.5.3"],\
           ["@types/less", null],\
           ["@types/lightningcss", null],\
-          ["@types/node", null],\
+          ["@types/node", "npm:20.12.2"],\
           ["@types/sass", null],\
           ["@types/stylus", null],\
           ["@types/sugarss", null],\
